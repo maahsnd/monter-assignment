@@ -30,7 +30,17 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Recently Generated Reports</h1>
+      <div>
+        <h1>Recently Generated Reports</h1>
+        <button>x</button>
+        <button>
+          <img
+            src="https://res.cloudinary.com/dscsiijis/image/upload/c_scale,h_20/v1713479155/filter_ykxxsz.png"
+            alt="Filter button icon"
+          />
+        </button>
+      </div>
+
       <table>
         <thead>
           <tr>
@@ -54,6 +64,16 @@ export default function Home() {
         </tbody>
       </table>
       <div>
+        <button
+          onClick={() => changePage(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          <img
+            src="https://res.cloudinary.com/dscsiijis/image/upload/c_scale,q_100,w_20/v1713478859/arrow-left_aeja3p.png"
+            alt="Previous arrow icon"
+          />
+          Prev
+        </button>
         {Array.from({ length: pageCount }, (_, i) => i + 1).map((number) => (
           <button
             key={number}
@@ -63,16 +83,15 @@ export default function Home() {
             {number}
           </button>
         ))}
-        <button
-          onClick={() => changePage(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          Previous
-        </button>
+
         <button
           onClick={() => changePage(currentPage + 1)}
           disabled={currentPage === pageCount}
         >
+          <img
+            src="https://res.cloudinary.com/dscsiijis/image/upload/c_scale,q_100,w_20/a_180/v1713478859/arrow-left_aeja3p.png"
+            alt="Next arrow icon"
+          />
           Next
         </button>
         <div>
