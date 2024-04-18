@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { formatDate, formatTime } from '../dateHelpers';
 
 export default function Home() {
   const [files, setFiles] = useState([]);
@@ -52,7 +53,10 @@ export default function Home() {
         <tbody>
           {currentTableData.map((file, index) => (
             <tr key={index}>
-              <td>{file.creationDate}</td>
+              <td>
+                {formatDate(file.creationDate)} <br />{' '}
+                <span>{formatTime(file.creationDate)}</span>
+              </td>
               <td>{file.file}</td>
               <td>
                 <a href={`/CSV-Files/${file.file}`} download>
