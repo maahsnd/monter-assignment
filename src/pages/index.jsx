@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { formatDate, formatTime } from '../dateHelpers';
+import { formatDate, formatTime } from '../utils/dateHelpers';
 
 export default function Home() {
   const [files, setFiles] = useState([]);
