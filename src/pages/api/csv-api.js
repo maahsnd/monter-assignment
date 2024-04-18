@@ -29,12 +29,12 @@ export default function handler(req, res) {
 
       const filesWithDates = csvFiles.map((file) => ({
         file: file,
-        creationDate: new Date(metadata[file].creationDate) || 'Unknown'
+        creationDate: metadata[file].creationDate || 'Unknown'
       }));
 
       filesWithDates.sort((a, b) => b.creationDate - a.creationDate);
 
-      res.status(200).json({ files: filesWithDates });
+      res.status(200).json({ files: filesWithDates.slice(0, 30) });
     });
   });
 }
