@@ -34,7 +34,12 @@ export default function Home() {
               <td>{file.file}</td> {/* Displaying the file name */}
               <td>
                 <a href={`/CSV-Files/${file.file}`} download>
-                  Download
+                  <img
+                    className="downloadIcon"
+                    src="https://res.cloudinary.com/dscsiijis/image/upload/c_pad,w_30,h_30/v1713477677/file_yej9dd.png"
+                    alt="Download Icon"
+                    /*  Download icon created by joalfa - Flaticon */
+                  />
                 </a>
               </td>
             </tr>
