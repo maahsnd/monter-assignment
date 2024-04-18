@@ -33,7 +33,7 @@ export default function Home() {
               <td>{file.creationDate}</td> {/* Displaying the date */}
               <td>{file.file}</td> {/* Displaying the file name */}
               <td>
-                <a href={`/CSV-Files/${file.name}`} download>
+                <a href={`/CSV-Files/${file.file}`} download>
                   Download
                 </a>
               </td>
