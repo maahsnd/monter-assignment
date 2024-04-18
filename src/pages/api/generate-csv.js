@@ -10,50 +10,57 @@ const metadataPath = path.join(__dirname, '../../../public/metadata.json');
 
 // Ensure the directory exists
 if (!fs.existsSync(baseDir)) {
-    fs.mkdirSync(baseDir, { recursive: true });
+  fs.mkdirSync(baseDir, { recursive: true });
 }
 
 function createCsvWriter(filename) {
-    return createObjectCsvWriter({
-        path: path.join(baseDir, filename),
-        header: [
-            {id: 'name', title: 'NAME'},
-            {id: 'email', title: 'EMAIL'},
-            {id: 'address', title: 'ADDRESS'},
-            {id: 'date', title: 'DATE'}
-        ]
-    });
+  return createObjectCsvWriter({
+    path: path.join(baseDir, filename),
+    header: [
+      { id: 'name', title: 'NAME' },
+      { id: 'email', title: 'EMAIL' },
+      { id: 'address', title: 'ADDRESS' },
+      { id: 'date', title: 'DATE' }
+    ]
+  });
 }
 
 function generateUserData() {
-    const numberOfRecords = faker.number.int({ min: 1, max: RECORDS_UPPER_BOUND });
-    const data = [];
-    for (let i = 0; i < numberOfRecords; i++) {
-        data.push({
-            name: faker.person.fullName(),
-            email: faker.internet.email(),
-            address: faker.location.streetAddress(),
-            date: faker.date.past().toISOString().split('T')[0]  // Format the date as YYYY-MM-DD
-        });
-    }
-    return data;
+  const numberOfRecords = faker.number.int({
+    min: 1,
+    max: RECORDS_UPPER_BOUND
+  });
+  const data = [];
+  for (let i = 0; i < numberOfRecords; i++) {
+    data.push({
+      name: faker.person.fullName(),
+      email: faker.internet.email(),
+      address: faker.location.streetAddress(),
+      date: faker.date.past().toISOString().split('T')[0] // Format the date as YYYY-MM-DD
+    });
+  }
+  return data;
 }
 
 async function generateCSVFiles() {
-    let metadata = {};
+  let metadata = {};
 
-    for (let i = 0; i < NUM_FILES; i++) {
-        const filename = `report_${i + 1}.csv`;
-        const creationDate = faker.date.recent({days: 20, refDate:'2024-04-18T00:00:00.000Z'}).toISOString().split('T')[0];
-        metadata[filename] = { creationDate };
+  for (let i = 0; i < NUM_FILES; i++) {
+    const filename = `report_${i + 1}.csv`;
+    const creationDate = faker.date.recent({ days: 45 });
 
-        const csvWriter = createCsvWriter(filename);
-        const data = generateUserData();
-        await csvWriter.writeRecords(data)
-            .then(() => console.log(`${filename} written successfully in ${baseDir}.`));
-    }
+    metadata[filename] = { creationDate };
 
-    fs.writeFileSync(metadataPath, JSON.stringify(metadata, null, 2));
+    const csvWriter = createCsvWriter(filename);
+    const data = generateUserData();
+    await csvWriter
+      .writeRecords(data)
+      .then(() =>
+        console.log(`${filename} written successfully in ${baseDir}.`)
+      );
+  }
+
+  fs.writeFileSync(metadataPath, JSON.stringify(metadata, null, 2));
 }
 
 generateCSVFiles();
