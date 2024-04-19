@@ -57,7 +57,7 @@ export default function Home() {
     setFiltering(false);
     setIsVisible(true);
     setEndDate('');
-    setEndDate('');
+    setStartDate('');
     setSortByDate('');
   };
 
