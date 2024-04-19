@@ -1,0 +1,50 @@
+.pageContainer {
+  display: flex;
+  width: 98vw;
+  height: 98vh;
+  margin: 1vh 1vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.reportContainer {
+  padding: 20px;
+  width: 80%;
+  height: 80%;
+  box-shadow: 0px 5px 15px 10px rgba(0, 0, 0, 0.1),
+    0px -2px 20px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.titleContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.titleContainer > h1 {
+  width: 100%;
+  text-align: center;
+}
+
+.headerButtonsContainer {
+  display: flex;
+  width: min-content;
+  justify-content: flex-end;
+}
+
+.headerButtonsContainer > button {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid black;
+  margin: 0 5px;
+}
+
+.headerButtonsContainer > button:hover {
+  cursor: pointer;
+  background-color: rgba(255, 68, 0, 0.8);
+}
