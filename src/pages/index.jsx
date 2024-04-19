@@ -75,7 +75,7 @@ export default function Home() {
             ))}
           </tbody>
         </table>
-        <div>
+        <div className={styles.paginatorButtonsContainer}>
           <button
             onClick={() => changePage(currentPage - 1)}
             disabled={currentPage === 1}
