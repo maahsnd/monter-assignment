@@ -7,13 +7,23 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [isVisible, setIsVisible] = useState(true);
+  const [filtering, setFiltering] = useState(false);
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [sortByDate, setSortByDate] = useState('');
+
+  const API = '/api/csv-api';
 
   useEffect(() => {
-    fetch('/api/csv-api')
+    callApi(API);
+  }, []);
+
+  async function callApi(url) {
+    fetch(url)
       .then((response) => response.json())
       .then((data) => setFiles(data.files))
       .catch((err) => console.error('Failed to load files', err));
-  }, []);
+  }
 
   const pageCount = Math.ceil(files.length / rowsPerPage);
 
@@ -35,6 +45,19 @@ export default function Home() {
     setIsVisible(!isVisible);
   };
 
+  const handleFilterApply = () => {
+    const params = {
+      startDate: startDate,
+      endDate: endDate,
+      sortByDate: sortByDate
+    };
+
+    const searchParams = new URLSearchParams(params).toString();
+    callApi(API + '?' + searchParams);
+    setFiltering(false);
+    setIsVisible(true);
+  };
+
   return (
     <div className={styles.pageContainer}>
       {isVisible ? (
@@ -43,7 +66,12 @@ export default function Home() {
             <h1>Recently Generated Reports</h1>
             <div className={styles.headerButtonsContainer}>
               <button onClick={toggleVisibility}>X</button>
-              <button>
+              <button
+                onClick={() => {
+                  toggleVisibility();
+                  setFiltering(true);
+                }}
+              >
                 <img
                   src="https://res.cloudinary.com/dscsiijis/image/upload/c_scale,h_20/v1713479155/filter_ykxxsz.png"
                   alt="Filter button icon"
@@ -129,6 +157,37 @@ export default function Home() {
             </div>
           </div>
           ;
+        </div>
+      ) : filtering ? (
+        <div>
+          <label>
+            Start Date:
+            <input
+              type="date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+            />
+          </label>
+          <label>
+            End Date:
+            <input
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+            />
+          </label>
+          <label>
+            Sort by Date:
+            <select
+              value={sortByDate}
+              onChange={(e) => setSortByDate(e.target.value)}
+            >
+              <option value="">Select</option>
+              <option value="asc">Ascending</option>
+              <option value="desc">Descending</option>
+            </select>
+          </label>
+          <button onClick={handleFilterApply}>Apply Filters</button>
         </div>
       ) : (
         <button onClick={toggleVisibility} className={styles.displayBtn}>
