@@ -46,7 +46,7 @@ export default function Home() {
           </div>
         </div>
 
-        <table>
+        <table className={styles.table}>
           <thead>
             <tr>
               <th>Date</th>
@@ -57,12 +57,12 @@ export default function Home() {
           <tbody>
             {currentTableData.map((file, index) => (
               <tr key={index}>
-                <td>
+                <td className={styles.fileDateCell}>
                   {formatDate(file.creationDate)} <br />{' '}
                   <span>{formatTime(file.creationDate)}</span>
                 </td>
-                <td>{file.file}</td>
-                <td>
+                <td className={styles.fileNameCell}>{file.file}</td>
+                <td className={styles.fileDownloadCell}>
                   <a href={`/CSV-Files/${file.file}`} download>
                     <img
                       className={styles.downloadIcon}
