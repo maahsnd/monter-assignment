@@ -17,6 +17,13 @@
     0px -2px 20px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentContainer {
+  overflow-y: auto;
+  flex-grow: 1;
 }
 
 .titleContainer {
@@ -60,6 +67,7 @@
   text-align: left;
   border-collapse: separate;
   border-spacing: 0 15px;
+  margin-bottom: 30px;
 }
 
 .table > thead {
@@ -93,10 +101,11 @@
 }
 
 .paginatorButtonsContainer {
+  background-color: white;
   position: absolute;
   bottom: 20px;
   height: 40px;
-  width: 90%;
+  width: 92%;
   display: flex;
   justify-content: center;
   align-items: center;
