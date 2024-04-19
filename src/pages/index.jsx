@@ -56,6 +56,9 @@ export default function Home() {
     callApi(API + '?' + searchParams);
     setFiltering(false);
     setIsVisible(true);
+    setEndDate('');
+    setEndDate('');
+    setSortByDate('');
   };
 
   return (
