@@ -8,6 +8,13 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.displayBtn {
+  border-radius: 4px;
+  padding: 8px 5px;
+  font-size: larger;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .reportContainer {
   padding: 20px;
   width: 80%;
@@ -57,7 +64,8 @@
   margin: 0 5px;
 }
 
-.headerButtonsContainer > button:hover {
+.headerButtonsContainer > button:hover,
+.displayBtn:hover {
   cursor: pointer;
   background-color: rgba(0, 128, 0, 0.406);
 }
