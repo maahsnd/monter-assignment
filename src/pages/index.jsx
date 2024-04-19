@@ -59,7 +59,9 @@ export default function Home() {
               <tr key={index}>
                 <td className={styles.fileDateCell}>
                   {formatDate(file.creationDate)} <br />{' '}
-                  <span>{formatTime(file.creationDate)}</span>
+                  <span className={styles.fileCreationTime}>
+                    {formatTime(file.creationDate)}
+                  </span>
                 </td>
                 <td className={styles.fileNameCell}>{file.file}</td>
                 <td className={styles.fileDownloadCell}>
@@ -79,6 +81,7 @@ export default function Home() {
           <button
             onClick={() => changePage(currentPage - 1)}
             disabled={currentPage === 1}
+            className={styles.pageChangeButton}
           >
             <img
               src="https://res.cloudinary.com/dscsiijis/image/upload/c_scale,q_100,w_20/v1713478859/arrow-left_aeja3p.png"
@@ -91,6 +94,7 @@ export default function Home() {
               key={number}
               onClick={() => changePage(number)}
               disabled={currentPage === number}
+              className={currentPage === number ? styles.currentPage : ''}
             >
               {number}
             </button>
@@ -99,14 +103,15 @@ export default function Home() {
           <button
             onClick={() => changePage(currentPage + 1)}
             disabled={currentPage === pageCount}
+            className={styles.pageChangeButton}
           >
+            Next
             <img
               src="https://res.cloudinary.com/dscsiijis/image/upload/c_scale,q_100,w_20/a_180/v1713478859/arrow-left_aeja3p.png"
               alt="Next arrow icon"
             />
-            Next
           </button>
-          <div>
+          <div className={styles.rowSelector}>
             Rows per page:
             <select value={rowsPerPage} onChange={handleChangeRowsPerPage}>
               <option value={5}>5</option>

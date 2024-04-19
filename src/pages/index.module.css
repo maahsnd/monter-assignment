@@ -47,7 +47,7 @@
 
 .headerButtonsContainer > button:hover {
   cursor: pointer;
-  background-color: rgba(255, 68, 0, 0.8);
+  background-color: rgba(0, 128, 0, 0.406);
 }
 
 .table {
@@ -55,14 +55,70 @@
   text-align: left;
 }
 
+.fileCreationTime {
+  color: grey;
+  font-size: 90%;
+}
+
 .fileDownloadCell > a {
   margin-left: 22px;
+}
+
+.fileDownloadCell > a > img:hover {
+  cursor: pointer;
+  background-color: rgba(0, 128, 0, 0.406);
+  border-radius: 4px;
+  padding: 3px 1px;
 }
 
 .paginatorButtonsContainer {
   position: absolute;
   bottom: 20px;
+  height: 40px;
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.paginatorButtonsContainer > .currentPage {
+  background-color: rgba(255, 68, 0, 0.8);
+  color: white;
+}
+
+.paginatorButtonsContainer > button,
+.paginatorButtonsContainer > option {
+  border: none;
+  border-radius: 8px;
+  padding: 5px 12px;
+  margin: 8px;
+}
+
+.paginatorButtonsContainer > button:hover,
+.paginatorButtonsContainer > option:hover,
+.paginatorButtonsContainer > .rowSelector > select:hover {
+  cursor: pointer;
+  background-color: rgba(0, 128, 0, 0.406);
+}
+
+.pageChangeButton {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.pageChangeButton > img {
+  margin: 0 10px;
+}
+
+.rowSelector {
+  margin-left: 30px;
+}
+
+.rowSelector > select {
+  margin-left: 15px;
+  border: none;
+  border-radius: 8px;
+  padding: 5px;
+  font-size: 16px;
 }
