@@ -68,7 +68,6 @@ export default function Home() {
           <div className={styles.titleContainer}>
             <h1>Recently Generated Reports</h1>
             <div className={styles.headerButtonsContainer}>
-              <button onClick={toggleVisibility}>X</button>
               <button
                 onClick={() => {
                   toggleVisibility();
@@ -80,6 +79,7 @@ export default function Home() {
                   alt="Filter button icon"
                 />
               </button>
+              <button onClick={toggleVisibility}>X</button>
             </div>
           </div>
           <div className={styles.contentContainer}>
