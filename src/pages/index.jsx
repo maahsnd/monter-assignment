@@ -162,7 +162,16 @@ export default function Home() {
           ;
         </div>
       ) : filtering ? (
-        <div>
+        <div className={styles.filterControls}>
+          <button
+            className={styles.exitButton}
+            onClick={() => {
+              setFiltering(false);
+              toggleVisibility();
+            }}
+          >
+            X
+          </button>
           <label>
             Start Date:
             <input
@@ -190,7 +199,9 @@ export default function Home() {
               <option value="desc">Descending</option>
             </select>
           </label>
-          <button onClick={handleFilterApply}>Apply Filters</button>
+          <button className={styles.filterSubmit} onClick={handleFilterApply}>
+            Apply Filters
+          </button>
         </div>
       ) : (
         <button onClick={toggleVisibility} className={styles.displayBtn}>

@@ -61,7 +61,8 @@
   margin-right: 10px;
 }
 
-.headerButtonsContainer > button {
+.headerButtonsContainer > button,
+.exitButton {
   height: 30px;
   width: 30px;
   display: flex;
@@ -73,7 +74,9 @@
 }
 
 .headerButtonsContainer > button:hover,
-.displayBtn:hover {
+.displayBtn:hover,
+.exitButton:hover,
+.filterSubmit:hover {
   cursor: pointer;
   background-color: rgba(0, 128, 0, 0.406);
 }
@@ -168,4 +171,15 @@
   border-radius: 8px;
   padding: 5px;
   font-size: 16px;
+}
+
+.filterControls {
+  display: flex;
+  align-items: center;
+}
+
+.filterSubmit {
+  border-radius: 8px;
+  padding: 5px 12px;
+  margin: 8px;
 }
