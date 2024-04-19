@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { formatDate, formatTime } from '../utils/dateHelpers';
-import styles from './index.module.css';
+import styles from './index.module.css'; // Make sure the path matches your actual CSS module file
 
 export default function Home() {
   const [files, setFiles] = useState([]);
@@ -46,37 +46,42 @@ export default function Home() {
           </div>
         </div>
 
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Report Name</th>
-              <th>Download</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentTableData.map((file, index) => (
-              <tr key={index}>
-                <td className={styles.fileDateCell}>
-                  {formatDate(file.creationDate)} <br />{' '}
-                  <span className={styles.fileCreationTime}>
-                    {formatTime(file.creationDate)}
-                  </span>
-                </td>
-                <td className={styles.fileNameCell}>{file.file}</td>
-                <td className={styles.fileDownloadCell}>
-                  <a href={`/CSV-Files/${file.file}`} download>
-                    <img
-                      className={styles.downloadIcon}
-                      src="https://res.cloudinary.com/dscsiijis/image/upload/c_pad,w_20,h_20/v1713477677/file_yej9dd.png"
-                      alt="Download Icon"
-                    />
-                  </a>
-                </td>
+        <div className={styles.contentContainer}>
+          {' '}
+          {/* Scrollable content area */}
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Report Name</th>
+                <th className={styles.fileDownloadCell}>Download</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {currentTableData.map((file, index) => (
+                <tr key={index} className={styles.row}>
+                  <td className={styles.fileDateCell}>
+                    {formatDate(file.creationDate)} <br />
+                    <span className={styles.fileCreationTime}>
+                      {formatTime(file.creationDate)}
+                    </span>
+                  </td>
+                  <td className={styles.fileNameCell}>{file.file}</td>
+                  <td className={styles.fileDownloadCell}>
+                    <a href={`/CSV-Files/${file.file}`} download>
+                      <img
+                        className={styles.downloadIcon}
+                        src="https://res.cloudinary.com/dscsiijis/image/upload/c_pad,w_25,h_25/v1713477677/file_yej9dd.png"
+                        alt="Download Icon"
+                      />
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
         <div className={styles.paginatorButtonsContainer}>
           <button
             onClick={() => changePage(currentPage - 1)}
@@ -99,7 +104,6 @@ export default function Home() {
               {number}
             </button>
           ))}
-
           <button
             onClick={() => changePage(currentPage + 1)}
             disabled={currentPage === pageCount}

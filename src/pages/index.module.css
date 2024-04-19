@@ -5,12 +5,14 @@
   margin: 1vh 1vw;
   justify-content: center;
   align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .reportContainer {
   padding: 20px;
   width: 80%;
   height: 80%;
+  overflow-y: scroll;
   box-shadow: 0px 5px 15px 10px rgba(0, 0, 0, 0.1),
     0px -2px 20px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -21,17 +23,20 @@
   display: flex;
   width: 100%;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .titleContainer > h1 {
   width: 100%;
   text-align: center;
+  font-size: x-large;
 }
 
 .headerButtonsContainer {
   display: flex;
   width: min-content;
   justify-content: flex-end;
+  margin-right: 10px;
 }
 
 .headerButtonsContainer > button {
@@ -53,6 +58,18 @@
 .table {
   width: 100%;
   text-align: left;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+}
+
+.table > thead {
+  color: grey;
+  font-size: larger;
+}
+
+.fileDateCell,
+.fileNameCell {
+  text-align: left;
 }
 
 .fileCreationTime {
@@ -60,8 +77,12 @@
   font-size: 90%;
 }
 
+.fileDownloadCell {
+  text-align: right;
+}
+
 .fileDownloadCell > a {
-  margin-left: 22px;
+  margin-right: 25px;
 }
 
 .fileDownloadCell > a > img:hover {
@@ -75,7 +96,7 @@
   position: absolute;
   bottom: 20px;
   height: 40px;
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
